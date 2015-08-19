@@ -1,16 +1,20 @@
 openCPQ Demo - Optical-Networks Configurator
 ============================================
 
-The hypothetical company OptoKom SE sells equipment for optical networks, e.g. optical switches.
+The hypothetical company OptoKom SE sells switches for optical networks.
 
 Configuration Rules
 -------------------
 
 For the demo configurator, assume the following:
-- There are two products, OptoSwitch 4 and OptoSwitch 16.
-- OptoSwitch 4 provides 4 slots, which can be equipped with boards. OptoSwitch 16 provides 16 slots.
+- There are three products, OptoSwitch 4, OptoSwitch 6, and OptoSwitch 16.
+- OptoSwitch 4 provides 4 slots, which can be equipped with
+  boards. Similarly, OptoSwitch 6 and OptoSwitch 16 provide 6 and 16
+  slots, respectively.
 - There are single-width boards and double-width boards (which occupy two adjacent slots).
-- A double-width board can only be equipped into "odd" slot numbers in OptoSwitch 16.
+- A double-width board can only be inserted into slots with odd numbers
+  in OptoSwitch 6 or OptoSwitch 16. Double-width boards cannot be used
+  in OptoSwitch 4.
 - Boards can have electrical interfaces or 
   a number of ports of certain types which can be equipped with transceivers of the same type.
 - A module-carrier board can be equipped with modules,
