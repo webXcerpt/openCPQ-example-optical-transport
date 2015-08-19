@@ -1,6 +1,5 @@
 "use strict";
 
-var pkg = require("./package.json");
 var deployment = require("./deployment.json");
 var gulp = require('gulp');
 var ftp = require('vinyl-ftp');
@@ -18,9 +17,9 @@ gulp.task('ftp', function () {
     });
 
     return gulp.src(['dst/**', '.htaccess'], { buffer: false })
-        .pipe(conn.dest(deployment.folder + "/" + pkg.name))
+        .pipe(conn.dest(deployment.folder))
 });
 
 gulp.task('clean', function(cb) {
-	del(["node_modules", "npm-debug.log", "dist", "{.,src}/*~"], cb);
+	del(["node_modules", "npm-debug.log", "dst", "{.,src}/*~"], cb);
 });

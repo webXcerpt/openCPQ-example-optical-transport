@@ -1,5 +1,5 @@
 {
-  "name": "optical-transport",
+  "name": "opencpq-example-optical-transport",
   "description": "openCPQ demo with optical-transport products.",
   "repository": {
     "type": "git",
@@ -8,7 +8,6 @@
   "scripts": {
     "dev-server": "node_modules/.bin/webpack-dev-server --progress --watch",
     "build": "node_modules/.bin/webpack --progress --production",
-    "predeploy": "npm run build",
     "deploy": "node_modules/.bin/gulp ftp"
   },
   "devDependencies": {

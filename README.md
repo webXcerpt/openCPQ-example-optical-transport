@@ -50,3 +50,44 @@ Running the Configurator in the Web
 -----------------------------------
 
 The configurator can be started from http://opencpq.webxcerpt.com/examples/optical-transport/.
+
+Building and Serving the Configurator Locally
+---------------------------------------------
+
+Run the following commands to build and serve the configurator:
+```sh
+$ git clone https://github.com/webXcerpt/openCPQ-example-optical-transport.git
+$ cd openCPQ-example-optical-transport
+$ npm install
+$ npm run dev-server
+```
+
+Now point your browser to http://localhost:8080/webpack-dev-server/.  The development
+server will continue to run and it will observe your changes to the code
+
+To build the application in directory `./dst/` run
+
+```
+$ npm run build
+```
+
+(still from within `openCPQ-example-optical-transport`).
+
+To deploy that build you can run
+
+```
+$ npm run deploy
+```
+
+This requires that you have a file `deployment.json` of the form
+
+```json
+{
+  "host": ...
+  "user": ...
+  "password": ...
+  "folder": ...
+}
+```
+
+providing the FTP location and credentials for the deployment.
