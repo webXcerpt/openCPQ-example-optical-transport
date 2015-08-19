@@ -51,8 +51,8 @@ Running the Configurator in the Web
 
 The configurator can be started from http://opencpq.webxcerpt.com/examples/optical-transport/.
 
-Building and Serving the Configurator Locally
----------------------------------------------
+Building and Serving the Configurator
+-------------------------------------
 
 Run the following commands to build and serve the configurator:
 ```sh
@@ -67,15 +67,15 @@ server will continue to run and it will observe your changes to the code
 
 To build the application in directory `./dst/` run
 
-```
+```sh
 $ npm run build
 ```
 
 (still from within `openCPQ-example-optical-transport`).
 
-To deploy that build you can run
+To deploy that build via FTP to your HTTP server you can run
 
-```
+```sh
 $ npm run deploy
 ```
 

@@ -16,7 +16,7 @@ gulp.task('ftp', function () {
         log: gutil.log
     });
 
-    return gulp.src(['dst/**', '.htaccess'], { buffer: false })
+    return gulp.src(['dst/**'], { buffer: false })
         .pipe(conn.dest(deployment.folder))
 });
 
