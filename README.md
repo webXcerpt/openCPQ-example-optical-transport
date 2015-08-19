@@ -83,10 +83,10 @@ This requires that you have a file `deployment.json` of the form
 
 ```json
 {
-  "host": ...
-  "user": ...
-  "password": ...
-  "folder": ...
+  "host": "...",
+  "user": "...",
+  "password": "...",
+  "folder": "..."
 }
 ```
 
