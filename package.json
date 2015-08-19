@@ -16,6 +16,7 @@
     "babel-loader": "^5.0.0",
     "babel-plugin-object-assign": "^1.2.1",
     "babyparse": "^0.4.3",
+    "bootstrap": "^3.3.5",
     "browser-filesaver": "^1.0.0",
     "css-loader": "^0.9.1",
     "del": "^1.1.1",
