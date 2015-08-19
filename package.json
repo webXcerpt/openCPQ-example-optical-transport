@@ -1,0 +1,40 @@
+{
+  "name": "optical-transport",
+  "description": "openCPQ demo with optical-transport products.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webXcerpt/openCPQ-example-optical-transport"
+  },
+  "scripts": {
+    "dev-server": "node_modules/.bin/webpack-dev-server --progress --watch",
+    "build": "node_modules/.bin/webpack --progress --production",
+    "predeploy": "npm run build",
+    "deploy": "node_modules/.bin/gulp ftp"
+  },
+  "devDependencies": {
+    "appcache-webpack-plugin": "git://github.com/webXcerpt/appcache-webpack-plugin.git",
+    "babel-loader": "^5.0.0",
+    "babel-plugin-object-assign": "^1.2.1",
+    "babyparse": "^0.4.3",
+    "browser-filesaver": "^1.0.0",
+    "css-loader": "^0.9.1",
+    "del": "^1.1.1",
+    "file-loader": "^0.8.1",
+    "glob": "^5.0.3",
+    "gulp": "^3.8.11",
+    "gulp-util": "^3.0.4",
+    "jquery": "^2.1.3",
+    "json-loader": "^0.5.1",
+    "less-loader": "^2.2.0",
+    "minimist": "^1.1.1",
+    "opencpq": "0.1.1",
+    "path": "^0.11.14",
+    "react": "^0.13.3",
+    "react-bootstrap": "^0.20.1",
+    "style-loader": "^0.9.0",
+    "url-loader": "^0.5.5",
+    "vinyl-ftp": "^0.4.0",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.8.0"
+  }
+}
