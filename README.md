@@ -54,7 +54,13 @@ The configurator can be started from http://opencpq.webxcerpt.com/examples/optic
 Building and Serving the Configurator
 -------------------------------------
 
+The commands below require that you have the programs
+[`git`](https://git-scm.com/), `node` (actually the `node` program
+coming with [`iojs`](https://iojs.org/en/index.html) and `npm` (also
+coming with `iojs`) installed and in your "PATH".
+
 Run the following commands to build and serve the configurator:
+
 ```sh
 $ git clone https://github.com/webXcerpt/openCPQ-example-optical-transport.git
 $ cd openCPQ-example-optical-transport
