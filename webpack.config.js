@@ -1,7 +1,5 @@
 "use strict";
 
-var manifestCacheEntries = [];
-
 var resources = require("glob").sync("./resources/**", {nodir: true}).map(function(file) {
 	return "!file?name=[path][name].[ext]&context=.!" + file;
 });
@@ -56,7 +54,7 @@ else {
 	config.plugins.push(
 		// The cache manifest goes to the hard-wired filename "manifest.appcache".
 		new AppCachePlugin({
-			cache: ['.'].concat(manifestCacheEntries),
+			cache: ['.'],
 			network: ['http://*', 'https://*', '*'],
 			settings: ["prefer-online"],
 		})
