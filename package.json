@@ -12,7 +12,7 @@
     "deploy": "node_modules/.bin/gulp ftp"
   },
   "devDependencies": {
-    "appcache-webpack-plugin": "git://github.com/webXcerpt/appcache-webpack-plugin.git",
+    "appcache-webpack-plugin": "^0.2.0",
     "babel-loader": "^5.0.0",
     "babel-plugin-object-assign": "^1.2.1",
     "babyparse": "^0.4.3",
