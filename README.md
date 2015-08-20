@@ -69,10 +69,11 @@ $ npm run dev-server
 ```
 
 Now point your browser to
-[http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/).
+[http://localhost:8080/webpack-dev-server/index.html](http://localhost:8080/webpack-dev-server/index.html).
 The development server will observe your changes to the code, rebuilding
 the application as needed and reloading it in your browser.  This is
-quite comfortable for configurator development.
+quite comfortable for configurator development.  You can stop the
+development server with Control-C.
 
 To build the application in directory `./dst/` in production mode, run
 
