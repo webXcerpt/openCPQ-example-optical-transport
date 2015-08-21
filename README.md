@@ -1,5 +1,6 @@
-openCPQ Demo - Optical-Networks Configurator
-============================================
+Optical-Networks Configurator
+=============================
+*a demo example for [openCPQ](https://github.com/webXcerpt/openCPQ)*
 
 The hypothetical company OptoKom SE sells switches for optical networks.
 
