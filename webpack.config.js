@@ -1,12 +1,7 @@
 "use strict";
 
-var resources = require("glob").sync("./resources/**", {nodir: true}).map(function(file) {
-	return "!file?name=[path][name].[ext]&context=.!" + file;
-});
-
-// ----------------------------------------------------------------------
-
 var path = require("path");
+var glob = require("glob");
 var webpack = require("webpack");
 var AppCachePlugin = require('appcache-webpack-plugin');
 
@@ -17,9 +12,11 @@ var debug = !(args.production || args.p);
 var config = {
 	target: "web",
 	entry: [].concat(
-		["!file?name=index.html&context=./src!./src/index.html"],
-		resources,
-		["./src/index.js"]
+		"!file?name=index.html&context=./src!./src/index.html",
+		glob.sync("./resources/**", {nodir: true}).map(function(file) {
+			return "!file?name=[path][name].[ext]&context=.!" + file;
+		}),
+		"./src/index.js"
 	),
 	output: {
 		path: path.resolve("dst"),

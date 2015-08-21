@@ -75,7 +75,7 @@ the application as needed and reloading it in your browser.  This is
 quite comfortable for configurator development.  You can stop the
 development server with Control-C.
 
-To build the application in directory `./dst/` in production mode, run
+To build the application in directory `./dst/` in "production mode", run
 
 ```sh
 $ npm run build
