@@ -20,6 +20,7 @@ var {
 	NamedAdder,
 	CSideEffect,
     renderTree, rootPath,
+	findEmbeddingAPI, embed,
 } = require("opencpq");
 
 var {
@@ -406,15 +407,21 @@ var workbench = CWorkbench(
 	configuration
 );
 
-renderTree(
-	workbench,
-	undefined,
-	() => ({
+function contextProvider() {
+	return {
 		path: rootPath,
 		toc: new TOC(),
 		bom: new NamedAdder(),
 		linearAggregators: ["bom"], // TODO add other linear aggregators?
 		problems: new Problems(),
-	}),
-	document.getElementsByTagName("body")[0]
-);
+	};
+}
+
+const mountPoint = document.getElementsByTagName("body")[0];
+
+const embeddingAPI = findEmbeddingAPI();
+
+if (embeddingAPI)
+	embed(workbench, embeddingAPI, contextProvider, mountPoint);
+else
+	renderTree(workbench, undefined, contextProvider, mountPoint);
