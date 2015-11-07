@@ -391,13 +391,13 @@ var workbench = CWorkbench(
 			</div>
 			<div style={colStyle(30)}>
 				<PanelGroup>
-					<Panel collapsable header={<h3>Contents</h3>}>
+					<Panel header={<h3>Contents</h3>}>
 						{toc.render()}
 					</Panel>
-					<Panel collapsable defaultExpanded header={<h3>Bill of Materials</h3>}>
+					<Panel defaultExpanded header={<h3>Bill of Materials</h3>}>
 						{bom.render()}
 					</Panel>
-					<Panel collapsable header={<h3>Problems</h3>}>
+					<Panel header={<h3>Problems</h3>}>
 						{problems.render()}
 					</Panel>
 				</PanelGroup>
