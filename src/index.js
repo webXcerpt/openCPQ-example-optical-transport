@@ -417,7 +417,7 @@ function contextProvider() {
 	};
 }
 
-const mountPoint = document.getElementsByTagName("body")[0];
+const mountPoint = document.getElementById("mnt");
 
 const embeddingAPI = findEmbeddingAPI();
 
