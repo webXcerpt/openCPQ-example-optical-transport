@@ -344,15 +344,15 @@ var solution = CNameSpace("solutionProps", CAggregate("networkElements", v => `T
 	        ])),
 	        cmember("training", "Training", CGroup([
 	            cmember("basic", "Basic Training", CEither({}, CGroup([
-	                cmemberNV("serviceProps", "basicSeats",    "Number of Seats", cintegerBOM("TR:BASIC", {defaultValue: 0})),
+	                cmemberNV("serviceProps", "basicSeats",    "Number of Seats", cintegerBOM("TR:BASIC", {defaultValue: 1})),
 	            ]))),
 	            cmember("advanced", "Advanced Training", CEither({}, CGroup(({serviceProps}) => [
 	                cmember("advancedSeats", "Number of Seats", CValidate(
 						(node, {warning}, {serviceProps}) => {
-	                		if (serviceProps.basicSeats < node.value)
+	                		if ((serviceProps.basicSeats || 0) < node.value)
 	                			warning("Advanced training requires basic training.");
 						},
-						cintegerBOM("TR:ADVANCED", {defaultValue: serviceProps.basicSeats}))),
+						cintegerBOM("TR:ADVANCED", {defaultValue: serviceProps.basicSeats || 1}))),
 	            ]))),
 	        ])),
     ])))),
