@@ -12,8 +12,8 @@ var {
 	CNameSpace,
 	CTOCEntry,
 	CBOMEntry,
-	TOC, Problems, 
-	VTOC, VProblems, 
+	TOC, Problems,
+	VTOC, VProblems,
 	CQuantifiedList,
 	CLinearAggregation, SimpleAdder,
 	CValidate,
@@ -24,7 +24,7 @@ var {
 } = require("opencpq");
 
 var {
-	PanelGroup, Panel, 
+	PanelGroup, Panel,
 	TabbedArea, TabPane,
 } = require("react-bootstrap");
 
@@ -182,7 +182,7 @@ var opticalSwitch6 =
 		CGroup(({productProps: p}) => [
 		    [for (i of range(1, 6))
 				() =>
-					cmemberNV("productProps", `slot${i}`, `Slot ${i}`, 
+					cmemberNV("productProps", `slot${i}`, `Slot ${i}`,
 						i % 2 === 0 && hasDoubleWidth(p[`slot${i-1}`])
 							? CHtml(<i>occupied</i>)
 							: boards(i % 2 === 1)
@@ -198,7 +198,7 @@ var opticalSwitch16 =
 		CGroup(({productProps: p}) => [
 		    [for (i of range(1, 16))
 				() =>
-					cmemberNV("productProps", `slot${i}`, `Slot ${i}`, 
+					cmemberNV("productProps", `slot${i}`, `Slot ${i}`,
 						i % 2 === 0 && hasDoubleWidth(p[`slot${i-1}`])
 							? CHtml(<i>occupied</i>)
 							: boards(i % 2 === 1)
@@ -235,7 +235,7 @@ function aggregate(name, value = 0, type) {
 function CAggregate(name, mkInfoMessage, type) {
 	return CLinearAggregation(name, SimpleAdder,
 		CValidate(
-			(node, {info}, {[name]: aggregator}) =>	info(mkInfoMessage(aggregator.get())), 
+			(node, {info}, {[name]: aggregator}) =>	info(mkInfoMessage(aggregator.get())),
 			type
 		));
 }
@@ -263,7 +263,7 @@ var rackType = ({inheritableRackProps}) => {
 
 var rack =
 	CTOCEntry("rack", (node, {rowIndex, quantity}) => `#${rowIndex+1}: ${quantity === 1 ? "Rack" : `${quantity} Racks`}`,
-		CNameSpace("rackProps", 
+		CNameSpace("rackProps",
 			CCheckHeightUnits(42,
 				CAggregate("power", v => `Total power consumption: ${v} W`,
 					CSideEffect(
@@ -387,7 +387,7 @@ var workbench = CWorkbench(
 					<Panel header={<h3>Configuration</h3>}>
 						{innerNode.render()}
 					</Panel>
-				</PanelGroup> 
+				</PanelGroup>
 			</div>
 			<div style={colStyle(30)}>
 				<PanelGroup>
