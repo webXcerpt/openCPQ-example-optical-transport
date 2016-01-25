@@ -1,4 +1,6 @@
-var React = require("react");
+import React from "react";
+import renderResult from "./render-result";
+import jsonResult from "./json-result";
 
 var {
 	CWorkbench,
@@ -421,7 +423,15 @@ const mountPoint = document.getElementById("mnt");
 
 const embeddingAPI = findEmbeddingAPI();
 
-if (embeddingAPI)
-	embed(workbench, embeddingAPI, contextProvider, mountPoint);
+if (embeddingAPI) {
+	const workbenchExt = CSideEffect(
+		(node, ctx) => {
+			ctx.html = renderResult(node);
+			ctx.json = jsonResult(node);
+		},
+		workbench
+	);
+	embed(workbenchExt, embeddingAPI, contextProvider, mountPoint);
+}
 else
 	renderTree(workbench, undefined, contextProvider, mountPoint);
