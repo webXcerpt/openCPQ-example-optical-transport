@@ -5,7 +5,7 @@ import {renderToStaticMarkup} from "react/lib/ReactServerRendering";
 
 // A tweaked variant of React.createElement adding class "openCPQ" to each element.
 function openCPQElement(tag, attrs, ...contents) {
-	var {className, ...moreAttrs} = attrs || {};
+	var {className = "", ...moreAttrs} = attrs || {};
 	className = `openCPQ ${className}`;
 	attrs = {className, ...moreAttrs};
 	return React.createElement(tag, attrs, ...contents);
