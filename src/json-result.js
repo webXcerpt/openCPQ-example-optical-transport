@@ -5,6 +5,7 @@ function el(tag, props) {
 const visitor = {
 	primitiveValue: ({value}) => el("primitiveValue", {value}),
 	unit: () => null,
+	html: () => null,
 	select: ({label, value, detail}) => el("select", {label, value, detail: transform(detail)}),
 	either: ({choice, detail}) => el("choice", {choice, detail: transform(detail)}),
 	group: ({members}) => el("group", {members: members.map(({name, node}) => ({name, value: transform(node)}))}),
@@ -13,11 +14,13 @@ const visitor = {
 	validation: ({inner}) => transform(inner),
 	toc: ({inner}) => transform(inner),
 	workbench: ({inner}) => transform(inner),
-	unimplemented: (node) => el("unimplemented", {node}),
+	unimplemented: node => {
+		throw `No JSON representation implemented for class '${node.constructor.name}'.`;
+	},
 };
 
 function transform(node) {
-	return node.visit(visitor);
+	return node == undefined ? node : node.visit(visitor);
 }
 
 export default transform;

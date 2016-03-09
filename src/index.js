@@ -32,7 +32,7 @@ var {
 
 var {cmemberNV, cmemberTOC, ccaseBOM, cintegerBOM, onlyIf, cforbidden, cassert} = require("../lib/utils");
 var {CPorts} = require("../lib/ports");
-var {VBOM} = require("../lib/bom.js"); // specific BOM implementation
+var {VBOM, getPrice} = require("../lib/bom.js"); // specific BOM implementation
 
 // TODO assign images
 
@@ -377,30 +377,29 @@ var workbench = CWorkbench(
 	(innerNode, {toc, bom, problems}) => {
 		function colStyle(percentage) {
 			return {
-				display: "inline-block",
-				verticalAlign: "top",
 				width: `${percentage}%`,
-				height: "100%",
+				minWidth: `${percentage}%`,
+				overflow: "auto",
 			};
 		}
-		return <div>
-			<div style={colStyle(70)}>
+		return <div style={{minWidth: "100%", display: "flex"}}>
+			<div style={{...colStyle(70)}}>
 				<PanelGroup>
 					<Panel header={<h3>Configuration</h3>}>
 						{innerNode.render()}
 					</Panel>
 				</PanelGroup>
 			</div>
-			<div style={colStyle(30)}>
+			<div style={{...colStyle(30), flex: "1 1 auto"}}>
 				<PanelGroup>
 					<Panel header={<h3>Contents</h3>}>
 						{toc.render()}
 					</Panel>
-					<Panel defaultExpanded header={<h3>Bill of Materials</h3>}>
-						{bom.render()}
-					</Panel>
 					<Panel header={<h3>Problems</h3>}>
 						{problems.render()}
+					</Panel>
+					<Panel defaultExpanded header={<h3>Bill of Materials</h3>}>
+						{bom.render()}
 					</Panel>
 				</PanelGroup>
 			</div>
@@ -419,19 +418,15 @@ function contextProvider() {
 	};
 }
 
+function makeResults(node, ctx) {
+	return {
+		html: renderResult(node),
+		json: jsonResult(node),
+		bom: ctx.bom.mapItems((item, qty) => ({item, qty})),
+		price: `${getPrice()}`,
+	};
+}
+
 const mountPoint = document.getElementById("mnt");
 
-const embeddingAPI = findEmbeddingAPI();
-
-if (embeddingAPI) {
-	const workbenchExt = CSideEffect(
-		(node, ctx) => {
-			ctx.html = renderResult(node);
-			ctx.json = jsonResult(node);
-		},
-		workbench
-	);
-	embed(workbenchExt, embeddingAPI, contextProvider, mountPoint);
-}
-else
-	renderTree(workbench, undefined, contextProvider, mountPoint);
+embed(workbench, contextProvider, makeResults, mountPoint);

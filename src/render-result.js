@@ -15,6 +15,7 @@ const visitor = {
 	boolean: ({value}) => <span className="primitive boolean">{value ? "yes" : "no"}</span>,
 	primitiveValue: ({value}) => <span className="primitive">{value}</span>,
 	unit: () => undefined,
+	html: (html) => html,
 	select: ({label, detail}) => <span className="select"><span className="select-item">{label || "(missing)"}{" "}</span>{toVDOM(detail)}</span>,
 	either: ({choice, detail}) => <span className="either"><span className="either-choice">{choice ? "yes" : "no"}</span>{toVDOM(detail)}</span>,
 	group: ({members}) => {
@@ -46,7 +47,7 @@ const visitor = {
 	validation: ({inner}) => toVDOM(inner),
 	toc: ({inner}) => toVDOM(inner),
 	workbench: ({inner}) => toVDOM(inner),
-	unimplemented: (n) => <span className="error">[### no toVDOM visitor given for {n.constructor.name} ###]</span>,
+	unimplemented: node => <span className="error">[### no toVDOM visitor given for {node.constructor.name} ###]</span>,
 };
 
 function toVDOM(node) {
