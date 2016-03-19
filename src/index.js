@@ -365,12 +365,29 @@ var solution = CNameSpace("solutionProps", CAggregate("networkElements", v => `T
  * some HTML information for each product, including links
  */
 
-var configuration = CSelect([
-    unansweredCase("Select Configuration Mode"),
-    ccase("Switches", "Optical Switches", CQuantifiedList({}, "Optical Switch", opticalSwitches)),
-    ccase("Rack",     "Racks",            CQuantifiedList({}, "Rack",           CNameSpace("inheritableRackProps", rack))),
-    ccase("Solution", "Solution",         CNameSpace("inheritableRackProps", solution)),
-]);
+// var configuration = CSelect([
+//     unansweredCase("Select Configuration Mode"),
+//     ccase("Switches", "Optical Switches", CQuantifiedList({}, "Optical Switch", opticalSwitches)),
+//     ccase("Rack",     "Racks",            CQuantifiedList({}, "Rack",           CNameSpace("inheritableRackProps", rack))),
+//     ccase("Solution", "Solution",         CNameSpace("inheritableRackProps", solution)),
+// ]);
+
+var configuration;
+switch (document.location.search.replace(/^\?/, "")) {
+	case "OS4":
+		configuration = CNameSpace("productProps", opticalSwitch4);
+		break;
+	case "OS6":
+		configuration = CNameSpace("productProps", opticalSwitch6);
+		break;
+	case "OS16":
+		configuration = CNameSpace("productProps", opticalSwitch16);
+		break;
+	case "solution":
+	default:
+		configuration = CNameSpace("inheritableRackProps", solution);
+		break;
+}
 
 var workbench = CWorkbench(
 	ctx => ({toc: VTOC(ctx), bom: VBOM(ctx), problems: VProblems(ctx)}),
