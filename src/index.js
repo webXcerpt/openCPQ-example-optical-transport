@@ -22,7 +22,7 @@ var {
 	NamedAdder,
 	CSideEffect,
     renderTree, rootPath,
-	findEmbeddingAPI, embed,
+	embed,
 } = require("opencpq");
 
 var {
@@ -446,4 +446,7 @@ function makeResults(node, ctx) {
 
 const mountPoint = document.getElementById("mnt");
 
-embed(workbench, contextProvider, makeResults, mountPoint);
+if (window === window.top)
+	renderTree(workbench, undefined, contextProvider, mountPoint);
+else
+	embed(workbench, contextProvider, makeResults, mountPoint);
