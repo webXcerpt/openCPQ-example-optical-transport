@@ -82,20 +82,35 @@ Run the following commands to build and serve the configurator:
 $ git clone https://github.com/webXcerpt/openCPQ-example-optical-transport.git
 $ cd openCPQ-example-optical-transport
 $ npm install
+```
+
+### Development Mode
+
+You can start a development server with
+
+```sh
 $ npm run dev-server
 ```
 
-Now point your browser to
-http://localhost:8080/webpack-dev-server/index.html?OS4,
-http://localhost:8080/webpack-dev-server/index.html?OS6,
-http://localhost:8080/webpack-dev-server/index.html?OS16 or
-http://localhost:8080/webpack-dev-server/index.html?solution
-(or to [http://localhost:8080/webpack-dev-server/embedding-demo/embedding-demo.html](http://localhost:8080/webpack-dev-server/embedding-demo/embedding-demo.html)
-for the embedding demo).
+Now point your browser to one of
+
+- [http://localhost:8080/webpack-dev-server/index.html?OS4](http://localhost:8080/webpack-dev-server/index.html?OS4),
+- [http://localhost:8080/webpack-dev-server/index.html?OS6](http://localhost:8080/webpack-dev-server/index.html?OS6),
+- [http://localhost:8080/webpack-dev-server/index.html?OS16](http://localhost:8080/webpack-dev-server/index.html?OS16),
+- [http://localhost:8080/webpack-dev-server/index.html?solution](http://localhost:8080/webpack-dev-server/index.html?solution)
+
+for a configurator or to
+
+- [http://localhost:8080/webpack-dev-server/embedding-demo/embedding-demo.html](http://localhost:8080/webpack-dev-server/embedding-demo/embedding-demo.html)
+
+for the embedding demo.
+
 The development server will observe your changes to the code, rebuilding
 the application as needed and reloading it in your browser.  This is
 quite comfortable for configurator development.  You can stop the
 development server with Control-C.
+
+### Production Mode
 
 To build the application in directory `./dst/` in "production mode", run
 
