@@ -446,7 +446,28 @@ function makeResults(node, ctx) {
 
 const mountPoint = document.getElementById("mnt");
 
-if (window === window.top)
-	renderTree(workbench, undefined, contextProvider, mountPoint);
-else
+function useEmbeddedMode() {
+	// Use stand-alone mode if we are
+	// - in the top-level window or
+	// - in a window directly controlled by a webpack development server.
+	// Otherwise use embedded mode.
+	// TODO Instead of doing this "guesswork", the configurator might be told
+	// explicitly (e.g., in the query part of the URL) whether it is supposed to
+	// run in embedded or stand-alone mode.
+	try {
+		if (window.top === window ||
+			window.parent.location.pathname ===
+			"/webpack-dev-server" + window.location.pathname)
+			return false;
+	}
+	catch(e) {
+		// If we come here, it is probably because window.parent.location has a
+		// different origin and we may not access the pathname.
+	}
+	return true;
+}
+
+if (useEmbeddedMode())
 	embed(workbench, contextProvider, makeResults, mountPoint);
+else
+	renderTree(workbench, undefined, contextProvider, mountPoint);
