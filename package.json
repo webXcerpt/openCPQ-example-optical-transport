@@ -11,7 +11,7 @@
     "deploy": "node_modules/.bin/gulp ftp"
   },
   "devDependencies": {
-    "appcache-webpack-plugin": "^0.2.0",
+    "appcache-webpack-plugin": "^1.2.1",
     "babel-core": "^5.0.0",
     "babel-loader": "^5.0.0",
     "babel-plugin-object-assign": "^1.2.1",

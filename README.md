@@ -16,7 +16,7 @@ For the demo configurator, assume the following:
 - A double-width board can only be inserted into slots with odd numbers
   in OptoSwitch 6 or OptoSwitch 16. Double-width boards cannot be used
   in OptoSwitch 4.
-- Boards can have electrical interfaces or 
+- Boards can have electrical interfaces or
   a number of ports of certain types which can be equipped with transceivers of the same type.
 - A module-carrier board can be equipped with modules,
   which in turn have electrical interfaces or can be equipped with transceivers.
@@ -28,11 +28,12 @@ For the demo configurator, assume the following:
 Configuration Modes
 ------------------
 
-Three different modes of configuration should be implemented:
-- Configuration of single products.
-- Configuration of racks, which contain products and additional rack equipment.
-- Configuration of a solution consisting of equipped racks, a network-management system, and additional service.
-  The configuration should be facilitated with some top-level parameters.  
+Different configuration modes are supported:
+- Configuration of single products (OptoSwitch 4/6/16).
+- Configuration of a solution consisting of racks equipped with switches,
+  a network-management system, and additional services.
+  To make the configuration more comfortable, some parameters can be given at
+  the top level.
 
 Maintenance of the Configurator
 -------------------------------
@@ -46,11 +47,26 @@ The product models are maintained by three different roles:
   It might be imported from a PDM system.
 - The basic-data manager maintains materials with descriptions and prices in tabular form (as tab-separated values in file `resources/materials.tsv`).
   This data can change daily and should be loaded at each start of the configurator. It might be imported from an ERP system.
-  
+
+An Embedding Application
+------------------------
+
+Directory `embedding-demo` contains a simple application demonstrating how
+configurators can be embedded into business applications.
+
 Running the Configurator in the Web
 -----------------------------------
 
-The configurator can be started from http://opencpq.webxcerpt.com/examples/optical-transport/.
+Demo configurators are available for
+[OptoSwitch 4](http://opencpq.webxcerpt.com/examples/optical-transport/index.html?OS4),
+[OptoSwitch 6](http://opencpq.webxcerpt.com/examples/optical-transport/index.html?OS6),
+[OptoSwitch 16](http://opencpq.webxcerpt.com/examples/optical-transport/index.html?OS16),
+and for a complete
+[solution](http://opencpq.webxcerpt.com/examples/optical-transport/index.html?solution).
+
+There is also a demo for the
+[embedding of configurators](http://opencpq.webxcerpt.com/examples/optical-transport/embedding-demo/embedding-demo.html)
+in a business application.
 
 Building and Serving the Configurator
 -------------------------------------
@@ -70,7 +86,12 @@ $ npm run dev-server
 ```
 
 Now point your browser to
-[http://localhost:8080/webpack-dev-server/index.html](http://localhost:8080/webpack-dev-server/index.html).
+http://localhost:8080/webpack-dev-server/index.html?OS4,
+http://localhost:8080/webpack-dev-server/index.html?OS6,
+http://localhost:8080/webpack-dev-server/index.html?OS16 or
+http://localhost:8080/webpack-dev-server/index.html?solution
+(or to [http://localhost:8080/webpack-dev-server/embedding-demo/embedding-demo.html](http://localhost:8080/webpack-dev-server/embedding-demo/embedding-demo.html)
+for the embedding demo).
 The development server will observe your changes to the code, rebuilding
 the application as needed and reloading it in your browser.  This is
 quite comfortable for configurator development.  You can stop the

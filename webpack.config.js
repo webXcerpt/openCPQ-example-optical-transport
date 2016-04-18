@@ -13,7 +13,8 @@ var config = {
 	target: "web",
 	entry: [].concat(
 		"!file?name=index.html&context=./src!./src/index.html",
-		glob.sync("./resources/**", {nodir: true}).map(function(file) {
+		glob.sync("./{embedding-demo,resources}/**", {nodir: true})
+		.map(function(file) {
 			return "!file?name=[path][name].[ext]&context=.!" + file;
 		}),
 		"./src/index.js"
@@ -54,6 +55,7 @@ else {
 			cache: ['.'],
 			network: ['http://*', 'https://*', '*'],
 			settings: ["prefer-online"],
+			exclude: [/embedding-demo\/.*/],
 		})
 	);
 }

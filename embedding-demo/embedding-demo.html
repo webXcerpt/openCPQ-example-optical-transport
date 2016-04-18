@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>openCPQ Embedding Demo</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .note {
+        border: 1px solid #CCC;
+        padding: 5px;
+        background-color: #EEE;
+      }
+      #list {
+        border: 1px solid #CCC;
+        background-color: #EEE;
+      }
+      .item-list-head > th {
+        background-color: #ABD;
+        border: 1px solid gray;
+      }
+      .separator {
+        height: 5px;
+      }
+      .price {
+        text-align: right;
+      }
+      .html {
+        border: 1px solid #CCC;
+        padding: 5px;
+        background-color: white;
+      }
+      .not_configured {
+        color: gray;
+      }
+      #configurator_pane {
+        visibility: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.5);
+      }
+      #configurator {
+        min-width: 200px;
+        min-height: 200px;
+        width: 98%;
+        height: 98%;
+        margin: 1%;
+        padding: 0;
+        border: 0;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><em>openCPQ</em> Embedding Demo</h1>
+
+    <p>
+      Configurators are frequently invoked from business software such as
+      web shops, CRM systems, and ERP systems.
+      This page demonstrates the embedding of <em>openCPQ</em>-based
+      configurators in a very simple parent application.
+      To make it easy to understand the code and to re-use parts of it, this
+      demo application does not depend on a particular business application.
+      For implementation details have a look at the source of this HTML file and
+      the heavily commented <a href="embedding-demo.js">JavaScript code</a>.
+    </p>
+    <p>
+      While we demonstrate the embedding functionality here as a part of the
+      optical-transport demo for convenience, notice that the embedding is only
+      loosely coupled to the particular embedded configurators.  In production
+      an embedding application is typically managed independently of the
+      configurators.
+    </p>
+    <p>
+      Below you find a list of instances of configurable products.
+      Each list item contains:
+    </p>
+    <ul>
+      <li>
+        Buttons for manipulating the item.
+      </li>
+      <li>
+        The product type, i.e., the name of the configurable product.
+      </li>
+      <li>
+        The internal representation of the configuration.
+        (This is just for demonstration purposes. It would not be displayed in
+        a real application.)
+      </li>
+      <li>
+        The price returned by the configurator.
+        (In a real application this would be properly formatted as a
+        monetary amount.)
+      </li>
+      <li>
+        The product configuration in human-readable form.
+      </li>
+    </ul>
+    <table id="list">
+      <thead>
+        <tr class="item-list-head">
+          <th colspan="3">Operations</th>
+          <th>Type</th>
+          <th>Configuration</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <!-- table content will be added programmatically -->
+    </table>
+    <p>
+      To extend the list, select a product type
+      <select id="select_type"></select> and
+      <button id="create_item">create</button> a new instance.
+    </p>
+
+    <!-- configurator glass pane, visible while configuring a product -->
+    <div id="configurator_pane">
+      <iframe id="configurator"></iframe>
+    </div>
+
+    <script src="embedding-demo.js"></script>
+  </body>
+</html>
